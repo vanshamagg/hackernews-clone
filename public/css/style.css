@@ -1,0 +1,12 @@
+.sortable, .sortable li{
+    background-color: rgb(233, 138, 138)
+}
+
+#articles tbody tr td {
+    background-color: #eee8e8;
+    font-family: 'Montserrat', sans-serif;
+}
+td.serial{
+    width: 1px;
+    font-size: 1.1em;
+}
