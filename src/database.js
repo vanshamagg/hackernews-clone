@@ -1,8 +1,9 @@
 let mongoose = require("mongoose");
 const colors = require('colors');
 
-const URI = "mongodb+srv://admin:admin@cluster0.d2rss.mongodb.net/dummy?retryWrites=true&w=majority";
 
+const database = 'hackernews'
+const URI = `mongodb+srv://admin:admin@cluster0.d2rss.mongodb.net/${database}?retryWrites=true&w=majority`;
 class DummyDatabase {
     constructor() {
         this._connect();
@@ -16,5 +17,4 @@ class DummyDatabase {
     }
 }
 
-// module.exports = new DummyDatabase();
-let db = new DummyDatabase();
+module.exports = new DummyDatabase();
