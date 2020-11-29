@@ -28,19 +28,15 @@
     <main>
         <div class="sortable">
             <ul class="list-group list-group-horizontal mx-auto font-weight-bold">
-                <li class="list-group-item border-0">new</li>
-                <li class="list-group-item border-0">past</li>
-                <li class="list-group-item border-0">submit</li>
+                <li class="list-group-item border-0"><a href="/">new</a></li>
+                <li class="list-group-item border-0"> <a href="/past">past</a></li>
+                <li class="list-group-item border-0"> <a href="/submit">submit </a></li>
                 <li class="list-group-item border-0">login</li>
                 <li class="list-group-item border-0">signup</li>
             </ul>
         </div>
 
-        <table class="table mt-0" id="articles">
-            <tbody>
-                {{{body}}}
-            </tbody>
-        </table>
+        {{{body}}}
     </main>
 
     <!--  Option 2: jQuery, Popper.js, and Bootstrap JS -->

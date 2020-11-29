@@ -6,10 +6,11 @@ const newsRouter = express.Router();
 
 // CREATE
 newsRouter.post("/", (req, res, next) => {
+    console.log(req.get('Content-Type'));
     console.log(req.body);
-    if (!req.body.title || !req.body.addedBy || !req.body.url || !req.body.points) {
+    if (!req.body.title || !req.body.url ) {
+        console.log("Improper Format".bold.red)
         res.status(400).send("Improper Format");
-        res.end();
     }
     (async () => {
         try {
@@ -18,7 +19,7 @@ newsRouter.post("/", (req, res, next) => {
                 index: count + 1,
                 title: req.body.title,
                 createdOn: Date(),
-                addedBy: req.body.addedBy,
+                addedBy: 0,
                 url: req.body.url,
                 points: 0,
             });

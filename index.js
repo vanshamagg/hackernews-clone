@@ -2,10 +2,11 @@ const express = require("express");
 const { color } = require("colors");
 const path = require("path");
 const db = require("./src/database");
+const homeRouter =  require("./routes/home")
 const userRouter = require("./routes/userRoute");
 const newsRouter = require("./routes/news");
 const exphbs = require("express-handlebars");
-const news = require("./src/models/news");
+
 
 // init app
 const app = express();
@@ -35,6 +36,7 @@ app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
 
 // body parser
+app.use(express.urlencoded({}))
 app.use(express.json());
 
 //  middleware for consoling every action
@@ -46,15 +48,8 @@ app.use((req, res, next) => {
 // static public files
 app.use(express.static("public"));
 
-app.get("/", (req, res) => {
-    (async () => {
-        const coll = await news.find();
-        res.render("home", {
-            news: coll,
-        });
-    })();
-});
 //  mount user routes on the application
+app.use("/", homeRouter)
 app.use("/api/user", userRouter);
 app.use("/api/news", newsRouter);
 
