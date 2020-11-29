@@ -6,7 +6,6 @@ const newsRouter = express.Router();
 
 // CREATE
 newsRouter.post("/", (req, res, next) => {
-    console.log(req.get('Content-Type'));
     console.log(req.body);
     if (!req.body.title || !req.body.url ) {
         console.log("Improper Format".bold.red)
@@ -19,13 +18,13 @@ newsRouter.post("/", (req, res, next) => {
                 index: count + 1,
                 title: req.body.title,
                 createdOn: Date(),
-                addedBy: 0,
+                addedBy: req.session.user,
                 url: req.body.url,
                 points: 0,
             });
 
             const doc = await newNews.save();
-            res.send(doc);
+            res.redirect("/");
         } catch (err) {
             console.log(err.message.bold.red);
         }

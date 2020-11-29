@@ -15,7 +15,7 @@ const newsSchema = new mongoose.Schema({
         unique: false,
     },
     addedBy: {
-        type: Number,
+        type: String,
         unique: false,
     },
     url: {

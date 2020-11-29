@@ -9,6 +9,7 @@ userRouter.get("/", (req, res, next) => {
     user.find()
         .then((coll) => res.status(200).send(coll))
         .catch((err) => res.status(400).send(err.message));
+
 });
 
 // Middlware for posting persistent data (CREATE)
@@ -21,10 +22,16 @@ userRouter.post("/", (req, res) => {
         password: req.body.password,
     });
 
-    user1
-        .save()
-        .then((doc) => res.send(doc))
-        .catch((err) => res.send(err.message));
+    (async () => {
+        try {
+            const doc = await user1.save();
+            res.send(doc);
+            console.log("User Added".green.bold);
+        } catch (err) {
+            res.send(err.message);
+            console.log(err.message.red.bold);
+        }
+    })();
 });
 
 // Middleware for accessing user on the basis of firstname (READ)
@@ -37,17 +44,24 @@ userRouter.get("/:firstname", (req, res, next) => {
 
 // Middleware for updating a user on the basis of _id (UPDATE)
 userRouter.patch("/:id", (req, res, next) => {
-    user.findOneAndUpdate(
-        { _id: req.params.id },
-        {
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
-            email: req.body.email,
-        },
-        { new: true, runValidators: true, useFindAndModify: true }
-    )
-        .then((doc) => res.send(doc))
-        .catch((err) => res.status(400).send(err.message));
+    (async () => {
+        try {
+            const doc = await user.findOneAndUpdate(
+                { _id: req.params.id },
+                {
+                    firstName: req.body.firstName,
+                    lastName: req.body.lastName,
+                    email: req.body.email,
+                },
+                { new: true, runValidators: true, useFindAndModify: true }
+            );
+            res.send(doc);
+            console.log(doc);
+        } catch (err) {
+            res.send(err.message);
+            console.log(err.message.red.bold);
+        }
+    })();
 });
 
 // Middleware for deleting a user (DELETE)
