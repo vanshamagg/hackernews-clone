@@ -1,10 +1,15 @@
+/**
+ * @author Vansham Aggarwal <vanshamagg@gmail.com>
+ * The router for the API accessing the 'users' collection
+ */
+
 const colors = require("colors");
 const express = require("express");
 const user = require("../src/models/users");
 
-let userRouter = express.Router();
+const userRouter = express.Router();
 
-// Middleware for accessing all users
+// All Users (READ)
 userRouter.get("/", (req, res, next) => {
     user.find()
         .then((coll) => res.status(200).send(coll))
@@ -12,7 +17,7 @@ userRouter.get("/", (req, res, next) => {
 
 });
 
-// Middlware for posting persistent data (CREATE)
+// Generating Persistent user data (CREATE)
 userRouter.post("/", (req, res) => {
     let user1 = new user({
         firstName: req.body.firstName,
@@ -25,7 +30,7 @@ userRouter.post("/", (req, res) => {
     (async () => {
         try {
             const doc = await user1.save();
-            res.send(doc);
+            res.send("USER SUCCESSFULLY CREATED. YOU CAN LOGIN NOW");
             console.log("User Added".green.bold);
         } catch (err) {
             res.send(err.message);
@@ -34,7 +39,7 @@ userRouter.post("/", (req, res) => {
     })();
 });
 
-// Middleware for accessing user on the basis of firstname (READ)
+// Accessing user data usign 'firstname (READ)
 userRouter.get("/:firstname", (req, res, next) => {
     console.log(req.params.firstname);
     user.find({ firstName: req.params.firstname })
@@ -42,7 +47,7 @@ userRouter.get("/:firstname", (req, res, next) => {
         .catch((err) => res.send(err.message));
 });
 
-// Middleware for updating a user on the basis of _id (UPDATE)
+// Updating user details using _id (UPDATE)
 userRouter.patch("/:id", (req, res, next) => {
     (async () => {
         try {
@@ -64,7 +69,7 @@ userRouter.patch("/:id", (req, res, next) => {
     })();
 });
 
-// Middleware for deleting a user (DELETE)
+// Deleting a user using the _id attr (DELETE)
 userRouter.delete("/:id", (req, res, next) => {
     user.findOneAndDelete({ id: req.params.id })
         .then((doc) => res.send("User Deleted"))

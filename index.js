@@ -1,3 +1,8 @@
+/**
+ * @author Vansham Aggarwal
+ * The entry point for the webb application
+ */
+
 const express = require("express");
 const { color } = require("colors");
 const path = require("path");
@@ -41,7 +46,7 @@ app.use(session({ secret: "mylittlesecret" }));
 app.use(express.urlencoded({}));
 app.use(express.json());
 
-//  middleware for consoling every action
+//  middleware for consoling every request
 app.use((req, res, next) => {
     console.log(`${req.method}`.bold.green + `  ${req.originalUrl}`.dim);
     next();
@@ -55,6 +60,7 @@ app.use("/", homeRouter);
 app.use("/api/user", userRouter);
 app.use("/api/news", newsRouter);
 
+// listen
 app.listen(PORT, () => {
-    console.log(`Server listening at http://${process.env.HOST}:${PORT}`.green);
+    console.log(`Server listening at http://${process.env.HOST}:${PORT}`.magenta.bold);
 });

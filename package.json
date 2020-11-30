@@ -1,7 +1,7 @@
 {
   "name": "hackernews-clone",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.1.6",
+  "description": "A lowlkey hackernews clone implemeneted with ExpressJS MongoDB Atlas as backend and Bootstrap and Jquery as front end.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

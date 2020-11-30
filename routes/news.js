@@ -1,3 +1,7 @@
+/**
+ * @author Vansham Aggarwal <vanshamagg@gmail.com>
+ * The router for the API access for the 'news' collection
+ */
 const colors = require("colors");
 const express = require("express");
 const news = require("../src/models/news");

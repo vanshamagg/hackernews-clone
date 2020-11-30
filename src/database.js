@@ -1,9 +1,24 @@
+/**
+ * @author Vansham Aggarwal <vanshamagg@gmail.com>
+ * Module to establish connection with the MongoDB Atlas Database
+ */
+
 let mongoose = require("mongoose");
 const colors = require('colors');
 const dotenv =  require('dotenv').config();
-
+/**
+ * Database URI
+ */
 const URI = `mongodb+srv://${process.env.DATABASE_USERNAME}:${process.env.DATABASE_PWD}@cluster0.d2rss.mongodb.net/${process.env.DATABASE_NAME}?retryWrites=true&w=majority`;
-class DummyDatabase {
+/**
+ * @author Vansham Aggarwal <vanshamagg@gmail.com>
+ */
+/**
+ * The Database class reponsible for establishing 
+ * connecting with the database
+ * @author Vansham Aggarwal <vanshamagg@gmail.com>
+ */
+class Database {
     constructor() {
         this._connect();
     }
@@ -16,4 +31,4 @@ class DummyDatabase {
     }
 }
 
-module.exports = new DummyDatabase();
+module.exports = new Database();

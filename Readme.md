@@ -1,16 +1,24 @@
-# Milestone-6: Hackers read news too you know
+# Hacker News Clone
 
-## Learning Competencies
+[Hackernews](https://hackernews-vansham.herokuapp.com/) is a clone of YCombinator's Hackernews implemented using ExpressJS and MongoDB Atlas as backend and Bootstrap and jquery as Front End.
 
-At the end of this milestone you will learn
+## Created By
+Vansham Aggarwal
+[vanshamagg@gmail.com](mailto:vanshamagg@gmail.com)
 
-- Reading and understanding code
-- Backend vs Frontend
-- Building dynamic webapps using Express
-- Understanding the databases: Mongodb
+## Installation
 
-## Problem Statement:
+Clone the git repo in your system and use the node package manager in the app directory (with no arguments). it will install all the dependencies. Be sure to supply values to the process.env variables.
+For Database Access, contact me on the email.
 
-Woohoo! Look like we're doing some real web app development now. Isn't this a lot more fun!? Working with actual pages and interactivity and users and profiles and databases and bugs and errors and crashes (OK! Maybe the last 3 aren't that fun).
+```bash
+npm install
+```
 
-With this MS, we will be building a fully featured webapp. What we will build is a clone of the [Y Combinator](http://www.ycombinator.com/)'s news site [HackerNews](http://news.ycombinator.com/)
+## Contributing
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)

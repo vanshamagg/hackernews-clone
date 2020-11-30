@@ -1,3 +1,8 @@
+/**
+ * @author Vansham Aggarwal <vanshamagg@gmail.com>
+ * The user collection SCHEMA
+ */
+
 let mongoose = require("mongoose");
 
 let userSchema = new mongoose.Schema({

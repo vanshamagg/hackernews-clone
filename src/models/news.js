@@ -1,3 +1,8 @@
+/**
+ * @author Vansham Aggarwal <vanshamagg@gmail.com>
+ * The news collection SCHEMA
+ */
+
 const mongoose = require("mongoose");
 const db = require("../database");
 
