@@ -7,6 +7,7 @@ const homeRouter = require("./routes/home");
 const userRouter = require("./routes/user");
 const newsRouter = require("./routes/news");
 const exphbs = require("express-handlebars");
+const dotenv =  require('dotenv').config();
 
 // init app
 const app = express();
@@ -55,5 +56,5 @@ app.use("/api/user", userRouter);
 app.use("/api/news", newsRouter);
 
 app.listen(PORT, () => {
-    console.log(`Server listening at http://localhost:${PORT}`.green);
+    console.log(`Server listening at http://${process.env.HOST}:${PORT}`.green);
 });
